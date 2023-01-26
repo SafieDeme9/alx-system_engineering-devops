@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#This script displaying "Best School" using while loop but say "bad luck" at 4th line "good luck" to 8th
+i=0
+while [ $i -lt 10 ]
+do
+	if [ $i -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ $i -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((i++))
+done
