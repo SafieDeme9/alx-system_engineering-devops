@@ -8,13 +8,14 @@ if [ -e $file ]; then
     # Check if file is empty
     if [ -s $file ]; then
         echo "school file is not empty"
-        # Check if file is a regular file
-        if [ -f $file ]; then
-            echo "school is a regular file"
-        fi
     else
-        echo "school file is empty"
+	echo "school file is empty"
     fi
+    # Check if file is a regular file
+    if [ -f $file ]; then
+	echo "school is a regular file"
+    fi
+  
 else
     echo "school file does not exist"
 fi
