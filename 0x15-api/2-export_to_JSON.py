@@ -30,4 +30,4 @@ if __name__ == "__main__":
             data.append(data_dict)
 
         with open("{}.json".format(user_id), 'w') as json_file:
-            json.dump(data, json_file)
+            json.dump({user_id: data}, json_file)
