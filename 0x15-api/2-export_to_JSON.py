@@ -16,19 +16,18 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         user_id = sys.argv[1]
         user = r.get('{}users?id={}'.format(url, user_id)).json()
-        user_name = user[0].get('name')
+        user_name = user[0].get('username')
 
         todos = r.get('{}todos?userId={}'.format(url, user_id)).json()
 
+        data = []
+        for task in todos:
+            data_dict = {}
+            data_dict.update({
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": user_name})
+            data.append(data_dict)
+
         with open("{}.json".format(user_id), 'w') as json_file:
-            data = list(map(
-                lambda x: {
-                    "task": x.get("title"),
-                    "completed": x.get("completed"),
-                    "username": user_name
-                    },
-                todos))
-            data = {
-                    "{}".format(user_id): data
-            }
             json.dump(data, json_file)
