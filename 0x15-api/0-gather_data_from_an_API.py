@@ -8,8 +8,10 @@ import sys
 
 user_id = sys.argv[1]
 url = 'https://jsonplaceholder.typicode.com/'
+"""we took the url"""
 
 if __name__ == "__main__":
+
     user = r.get('{}users?id={}'.format(url, user_id)).json()
     user_name = user[0].get('name')
 
