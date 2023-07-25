@@ -13,6 +13,7 @@ url = 'https://jsonplaceholder.typicode.com/'
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
+        user_id = sys.argv[1]
         user = r.get('{}users?id={}'.format(url, user_id)).json()
         user_name = user[0].get('name')
 
