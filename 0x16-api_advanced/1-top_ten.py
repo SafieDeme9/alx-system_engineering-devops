@@ -6,13 +6,13 @@ import requests
 def top_ten(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {
-            "User-Agent": "Mozilla/5.0"
+        "User-Agent": "Mozilla/5.0"
     }
     params = {
-            "limit": 10
+        "limit": 10
     }
     response = requests.get(url, headers=headers, params=params,
-            allow_redirects=False)
+                            allow_redirects=False)
     if response.status_code == 200:
         posts = response.json()
         children = posts["data"]["children"]
