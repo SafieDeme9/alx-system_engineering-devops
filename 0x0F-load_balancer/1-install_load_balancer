@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#install and configure HAproxy
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
+sudo apt-get update
+sudo apt-get install -y haproxy=2.6.\*
+config=\
+"
+backend webservers
+    balance roundrobin
+    server web-01 52.3.250.148:80 check
+    server web-02 100.26.239.57:80 check
+"
+sudo echo "$backend_config" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy reload
